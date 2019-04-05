@@ -26,7 +26,12 @@ public class PersonRepository {
   }
 
   public void save(Person person) {
-    em.persist(person);
+
+    if(person.getId() == null) {
+      em.persist(person);
+    } else {
+      em.merge(person);
+    }
   }
 
 }

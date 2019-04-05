@@ -20,6 +20,7 @@
       </tr>
     </thead>
     <tbody>
+    <c:if test="${ empty id}">
       <tr>
         <td>*</td>
         <td><input name="firstName" /></td>
@@ -28,18 +29,42 @@
         <td><input name="birthDate" /></td>
         <td><input type="submit" /></td>
       </tr>
+    </c:if>
       <c:forEach var="person" items="${persons}">
-        <tr>
-          <td>${person.id}</td>
-          <td>${person.firstName}</td>
-          <td>${person.lastName}</td>
-          <td>${person.email}</td>
-          <td>${person.birthDate}</td>
-          <td><a href="${context}delete/${person.id}">Supprimer</a></td>
-        </tr>
+        <c:if test="${person.id eq id}">
+          <tr>
+            <td><input type="hidden" name="id" value="${person.id}"></td>
+            <td><input name="firstName" value="${person.firstName}"></td>
+            <td><input name="lastName" value="${person.lastName}"></td>
+            <td><input name="email" value="${person.email}"></td>
+            <td><input name="birthDate" value="${person.birthDate}"></td>
+            <td><a href="${context}delete/${person.id}">Supprimer</a></td>
+            <td><a href="${context}">Annuler</a></td>
+            <td><input type="submit" /></td>
+          </tr>
+        </c:if>
+        <c:if test="${person.id ne id}">
+          <tr>
+            <td>${person.id}</td>
+            <td>${person.firstName}</td>
+            <td>${person.lastName}</td>
+            <td>${person.email}</td>
+            <td>${person.birthDate}</td>
+            <td><a href="${context}delete/${person.id}">Supprimer</a></td>
+            <td><a href="${context}${person.id}">Modifier</a></td>
+          </tr>
+        </c:if>
       </c:forEach>
     </tbody>
   </table>
 </form>
+<script>
+  function edit(event) {
+    event.preventDefault();
+    console.log(event.target);
+    var newInput = document.createElement("input");
+    newInput.setAttribute("name", "firstName");
+  }
+</script>
 </body>
 </html>
