@@ -6,7 +6,7 @@ import java.math.*;
 @Entity
 public class BankAccount {
 
-  @Id @GeneratedValue
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   private BigDecimal balance;

@@ -13,8 +13,7 @@ public class PersonRepository {
   private EntityManager em;
 
   public void deleteById(Integer id) {
-    Person person = findById(id);
-    em.remove(person);
+    em.remove(em.getReference(Person.class, id));
   }
 
   public List<Person> findAll() {
