@@ -1,6 +1,6 @@
-package fr.imie.contact.servlets;
+package fr.imie.contact.actions;
 
-import fr.imie.contact.*;
+import com.opensymphony.xwork2.ActionSupport;
 import fr.imie.contact.entities.*;
 import fr.imie.contact.repositories.*;
 
@@ -10,16 +10,16 @@ import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 import java.io.*;
 import java.math.BigDecimal;
-import java.time.*;
 import java.util.*;
 
-@WebServlet("/bankaccount/*")
-public class BankAccountServlet extends HttpServlet {
+//@WebServlet("/bankaccount/*")
+public class BankAccountAction extends ActionSupport {
 
   @Inject
   private BankAccountRepository bankAccountRepository;
   @Inject
   private PersonRepository personRepository;
+
 
 
   protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

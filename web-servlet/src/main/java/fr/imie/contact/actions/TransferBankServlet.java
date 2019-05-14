@@ -1,7 +1,6 @@
-package fr.imie.contact.servlets;
+package fr.imie.contact.actions;
 
 import fr.imie.contact.entities.BankAccount;
-import fr.imie.contact.entities.Person;
 import fr.imie.contact.repositories.BankAccountRepository;
 import fr.imie.contact.repositories.PersonRepository;
 

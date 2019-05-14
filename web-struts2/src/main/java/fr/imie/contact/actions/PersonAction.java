@@ -1,5 +1,6 @@
-package fr.imie.contact.servlets;
+package fr.imie.contact.actions;
 
+import com.opensymphony.xwork2.ActionSupport;
 import fr.imie.contact.*;
 import fr.imie.contact.entities.*;
 import fr.imie.contact.repositories.*;
@@ -12,11 +13,26 @@ import java.io.*;
 import java.time.*;
 import java.util.*;
 
-@WebServlet("/person/*")
-public class PersonServlet extends HttpServlet {
+//@WebServlet("/person/*")
+public class PersonAction extends ActionSupport {
 
   @Inject
   private PersonRepository repository;
+
+  public String save () {
+    return SUCCESS;
+  }
+
+  public String deleteById () {
+    return SUCCESS;
+  }
+
+  public String findAll () {
+    //List<Person> persons = repository.findAll();
+    //request.setAttribute("persons", persons);
+    //request.getRequestDispatcher("/WEB-INF/views/person.jsp").forward(request, response);
+    return SUCCESS;
+  }
 
   protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -51,10 +67,7 @@ public class PersonServlet extends HttpServlet {
 
     }
 
-    List<Person> persons = repository.findAll();
 
-    request.setAttribute("persons", persons);
-    request.getRequestDispatcher("/WEB-INF/views/person.jsp").forward(request, response);
   }
 
 }

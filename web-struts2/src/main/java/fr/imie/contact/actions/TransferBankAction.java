@@ -1,7 +1,7 @@
-package fr.imie.contact.servlets;
+package fr.imie.contact.actions;
 
+import com.opensymphony.xwork2.ActionSupport;
 import fr.imie.contact.entities.BankAccount;
-import fr.imie.contact.entities.Person;
 import fr.imie.contact.repositories.BankAccountRepository;
 import fr.imie.contact.repositories.PersonRepository;
 
@@ -15,8 +15,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
-@WebServlet("/transferaccount/*")
-public class TransferBankServlet extends HttpServlet {
+//@WebServlet("/transferaccount/*")
+public class TransferBankAction extends ActionSupport {
 
     @Inject
     private BankAccountRepository bankAccountRepository;
